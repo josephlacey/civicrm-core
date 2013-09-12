@@ -451,6 +451,10 @@ class CRM_Contact_BAO_Query {
       $fields = CRM_Activity_BAO_Activity::exportableFields();
       $this->_fields = array_merge($this->_fields, $fields);
 
+      // add line item fields
+      $fields = CRM_Price_BAO_LineItem::exportableFields();
+      $this->_fields = array_merge($this->_fields, $fields);
+
       // add any fields provided by hook implementers
       $extFields = CRM_Contact_BAO_Query_Hook::singleton()->getFields();
       $this->_fields = array_merge($this->_fields, $extFields);
