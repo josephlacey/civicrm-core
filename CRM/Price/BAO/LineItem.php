@@ -107,41 +107,14 @@ class CRM_Price_BAO_LineItem extends CRM_Price_DAO_LineItem {
    * @access public
    * @static
    */
-  static function &exportableFields() {
+  static function &exportableFields($name = 'LineItem') {
     if (!self::$_exportableFields) {
       if (!self::$_exportableFields) {
         self::$_exportableFields = array();
       }
 
-      $lineItemFields = array(
-        'qty' => array(
-          'title' => 'Quantity',
-          'name' => 'qty',
-          'data_type' => CRM_Utils_Type::T_INT,
-        ),
-        'unit_price' => array(
-          'title' => 'Unit Price',
-          'name' => 'unit_price',
-          'data_type' => CRM_Utils_Type::T_MONEY,
-        ),
-        'line_total' => array(
-          'title' => 'Line Total',
-          'name' => 'line_total',
-          'data_type' => CRM_Utils_Type::T_MONEY,
-        ),
-        'financial_type_id' => array(
-          'title' => 'Financial Type ID',
-          'name' => 'financial_type_id',
-          'data_type' => CRM_Utils_Type::T_INT,
-        ),
-        'deductible_amount' => array(
-          'title' => 'Deductible Amount',
-          'name' => 'deductible_amount',
-          'data_type' => CRM_Utils_Type::T_MONEY,
-        ),
-      );
-
-      $fields = $lineItemFields;
+      $exportableFields = CRM_Price_DAO_LineItem::export();
+      $fields = $exportableFields;
       self::$_exportableFields = $fields;
     }
 
