@@ -69,6 +69,7 @@
   </field>
   <field>
     <name>qty</name>
+    <export>true</export>
     <type>int unsigned</type>
     <required>true</required>
     <comment>How many items ordered</comment>
@@ -76,6 +77,7 @@
   </field>
   <field>
     <name>unit_price</name>
+    <export>true</export>
     <type>decimal</type>
     <required>true</required>
     <comment>price of each item</comment>
@@ -83,6 +85,7 @@
   </field>
   <field>
     <name>line_total</name>
+    <export>true</export>
     <type>decimal</type>
     <required>true</required>
     <comment>qty * unit_price</comment>
@@ -125,6 +128,7 @@
   </foreignKey>
   <field>
     <name>financial_type_id</name>
+    <export>true</export>
     <title>Financial Type</title>
     <type>int unsigned</type>
     <default>NULL</default>
@@ -140,6 +144,7 @@
   </foreignKey>
   <field>
     <name>deductible_amount</name>
+    <export>true</export>
     <title>Deductible Amount</title>
     <type>decimal</type>
     <default>0.0</default>
