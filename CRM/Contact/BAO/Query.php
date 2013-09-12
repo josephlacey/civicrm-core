@@ -2480,6 +2480,13 @@ class CRM_Contact_BAO_Query {
           $from .= " $side JOIN civicrm_website ON contact_a.id = civicrm_website.contact_id ";
           continue;
 
+        case 'civicrm_line_item':
+          $from .= " $side JOIN civicrm_contribution civicrm_cl ON contact_a.id = civicrm_cl.contact_id";
+          $from .= " $side JOIN civicrm_participant civicrm_pl ON contact_a.id = civicrm_pl.contact_id";
+          $from .= " INNER JOIN civicrm_line_item ON ((civicrm_cl.id = civicrm_line_item.entity_id AND civicrm_line_item.entity_table = 'civicrm_contribution')"
+                                                . "OR (civicrm_pl.id = civicrm_line_item.entity_id AND civicrm_line_item.entity_table = 'civicrm_participant'))";
+          continue;
+
         default:
           $from .= CRM_Core_Component::from($name, $mode, $side);
           $from .= CRM_Contact_BAO_Query_Hook::singleton()->buildSearchfrom($name, $mode, $side);
