@@ -402,6 +402,11 @@ class CRM_Core_BAO_Mapping extends CRM_Core_DAO_Mapping {
       }
     }
 
+    if ($mappingType == 'Search Builder') {
+      $fields['LineItem'] = CRM_Price_BAO_LineItem::exportableFields('LineItem');
+      $compArray['LineItem'] = ts('Line Item');
+    }
+
     if (($mappingType == 'Search Builder') || ($exportMode == CRM_Export_Form_Select::EVENT_EXPORT)) {
       if (CRM_Core_Permission::access('CiviEvent')) {
         $fields['Participant'] = CRM_Event_BAO_Participant::exportableFields();

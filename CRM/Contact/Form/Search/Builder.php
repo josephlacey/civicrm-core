@@ -432,7 +432,7 @@ class CRM_Contact_Form_Search_Builder extends CRM_Contact_Form_Search {
       'membership_status' => 'membership',
       'membership_type' => 'membership',
     );
-    $entities = array('contact', 'activity', 'participant', 'pledge', 'member', 'contribution');
+    $entities = array('contact', 'activity', 'participant', 'pledge', 'member', 'contribution', 'LineItem');
     CRM_Contact_BAO_Query_Hook::singleton()->alterSearchBuilderOptions($entities, $options);
     foreach ($entities as $entity) {
       $fields = civicrm_api($entity, 'getfields', array('version' => 3));
